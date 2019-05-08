@@ -1,0 +1,22 @@
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+
+  .app-navbar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 25px;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}

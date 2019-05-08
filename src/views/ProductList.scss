@@ -1,0 +1,24 @@
+.product-list {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+
+  .product-list-header {
+    display: flex;
+    margin-bottom: 25px;
+  }
+
+  .product-list-items {
+    display: flex;
+    flex-direction: column;
+    .product {
+      display: flex;
+      flex-direction: row;
+      flex: 1 1 0;
+    }
+  }
+
+  .product-column {
+    flex: 1 1 0;
+  }
+}

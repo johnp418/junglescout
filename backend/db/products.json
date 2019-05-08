@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "ASIN": "B002QYW8LW",
+    "name": "Product 1",
+    "category": "Baby",
+    "dimension": "18.4 x 15 x 9.4 inches",
+    "rank": "1"
+  },
+  {
+    "id": 2,
+    "ASIN": "B002QYW8LA",
+    "name": "Product 2",
+    "category": "Health",
+    "dimension": "18.4 x 15 x 9.4 inches",
+    "rank": "9"
+  },
+  {
+    "id": 3,
+    "ASIN": "B002QYW8LB",
+    "name": "Product 3",
+    "category": "Electronics",
+    "dimension": "18.4 x 15 x 9.4 inches",
+    "rank": "29"
+  },
+  {
+    "id": 4,
+    "ASIN": "B002QYW8LC",
+    "name": "Product 4",
+    "category": "Baby",
+    "dimension": "18.4 x 15 x 9.4 inches",
+    "rank": "3"
+  },
+  {
+    "id": 5,
+    "ASIN": "B002QYW8LD",
+    "name": "Product 5",
+    "category": "Baby",
+    "dimension": "18.4 x 15 x 9.4 inches",
+    "rank": "10"
+  }
+]
