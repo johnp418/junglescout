@@ -5,7 +5,7 @@ const app = new express();
 const productsRouter = require("./routes/Product");
 const db = require("./db");
 
-const PORT = process.env.APP_PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 
