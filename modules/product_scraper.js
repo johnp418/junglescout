@@ -102,7 +102,12 @@ const parse = html => {
 
 const scrape = async ASIN => {
   console.log("Scraping ", ASIN);
-  const response = await axios.get(`https://www.amazon.com/dp/${ASIN}`);
+  const response = await axios.get(`https://www.amazon.com/dp/${ASIN}`, {
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36"
+    }
+  });
   // fs.writeFileSync(`${ASIN}.html`, response.data);
   // let response = fs.readFileSync(`${ASIN}.html`);
   // let result = parse(response.data);

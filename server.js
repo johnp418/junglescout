@@ -17,6 +17,9 @@ db.connect().then(() => {
   app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "build", "index.html"));
   });
+  app.get("/products", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+  });
 
   app.use((err, req, res, next) => {
     console.error(err.stack);
