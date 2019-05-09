@@ -3,4 +3,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  .product-card {
+    img {
+      max-width: 250px;
+      max-height: 250px;
+    }
+  }
 }

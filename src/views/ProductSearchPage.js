@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import ProductCard from "../components/ProductCard";
 import { addProduct } from "../api";
 import "./ProductSearchPage.scss";
 
@@ -6,19 +7,20 @@ const ProductSearchPage = () => {
   const inputRef = useRef();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [newProduct, setNewProduct] = useState(null);
+  const [product, setProduct] = useState(null);
 
   const onProductSubmit = async e => {
+    if (loading) return;
     e.preventDefault();
-    console.log("Submit ", inputRef.current.value);
 
     let ASIN = inputRef.current.value.trim();
     setLoading(true);
+    setError(null);
     try {
-      const product = await addProduct(ASIN);
-      setNewProduct(product);
+      const newProduct = await addProduct(ASIN);
+      setProduct(newProduct);
     } catch (err) {
-      setError(err);
+      setError(err.response.data);
     }
     setLoading(false);
   };
@@ -32,11 +34,16 @@ const ProductSearchPage = () => {
           +
         </button>
       </form>
-      {error && <div className="error-message">Something went wrong!</div>}
-      {newProduct && (
+      {error && (
+        <div className="error-message">
+          <div>Something went wrong. Try again later</div>
+          <div>{error.toString()}</div>
+        </div>
+      )}
+      {loading && <div>Loading...</div>}
+      {product && (
         <div>
-          <div>You've added</div>
-          <div>Product here</div>
+          <ProductCard product={product} />
         </div>
       )}
     </div>

@@ -1,27 +1,29 @@
+const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = new express();
-const mongoose = require("mongoose");
 const productsRouter = require("./routes/Product");
-mongoose.connect("mongodb://localhost:27017/test", { useNewUrlParser: true });
+const db = require("./db");
+
+const PORT = process.env.APP_PORT || 5000;
 
 app.use(bodyParser.json());
 
-var db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function() {
-  // we're connected!
-  console.log("Connected !!");
-});
+db.connect().then(() => {
+  app.use("/api/products", productsRouter);
 
-app.use("/api/products", productsRouter);
+  app.use(express.static(path.join(__dirname, "build")));
 
-app.use((err, req, res, next) => {
-  console.log("Error Middleware");
-  console.error(err.stack);
-  res.status(500).send("Something broke!");
-});
+  app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+  });
 
-app.listen(5000, () => {
-  console.log("Started Server ");
+  app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send("Something broke!");
+  });
+
+  app.listen(PORT, () => {
+    console.log("Started Server ");
+  });
 });
